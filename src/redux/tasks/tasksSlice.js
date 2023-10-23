@@ -11,7 +11,8 @@ const initialState = {
             assignedTo: 'Tarik',
             priority: 'high'
           }
-    ]
+        ],
+        usersSpecificTasks:[]
 }
 
 const tasksSlice =createSlice ( {
@@ -33,8 +34,11 @@ const tasksSlice =createSlice ( {
     updateStatus:(state, {payload}) =>{
         const target = state.tasks.find((item) =>item.id === payload.id);
         target.status = payload.status
+    },
+    usersTasks:(state, {payload}) =>{
+        state.usersSpecificTasks=state.tasks.filter((item) =>item.assignedTo == payload)
     }
    }
 });
-export const{addTask, updateStatus, removeTask} =tasksSlice.actions
+export const{addTask, updateStatus, removeTask, usersTasks} =tasksSlice.actions
 export default tasksSlice.reducer;

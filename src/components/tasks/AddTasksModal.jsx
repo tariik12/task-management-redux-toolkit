@@ -45,6 +45,7 @@ const dispatch = useDispatch();
         <option value="shamim">Shamim</option>
         <option value="raju">Raju</option>
         <option value="hasan">Hasan</option>
+        <option value="Tarik">Tarik</option>
       </select>
                     </div>
 
