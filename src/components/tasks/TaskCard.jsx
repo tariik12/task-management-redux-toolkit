@@ -1,17 +1,17 @@
 import { ArrowRightIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { useDispatch } from 'react-redux';
+import { removeTask, updateStatus } from '../../redux/tasks/tasksSlice';
 
-const TaskCard = () => {
-  const task = {
-    id: 1,
-    status: 'pending',
-    title: 'Remove Button',
-    description:
-      'We need a remove button in our task card. Meke the button red and use Heroicon for tashbin icon.',
-    date: '2023-08-28',
-    assignedTo: 'Mir Hussain',
-    priority: 'high',
-  };
-
+const TaskCard = ({task}) => {
+const dispatch = useDispatch();
+let updatedStatus;
+if(task.status ==='pending'){
+  updatedStatus='running';
+}else if(task.status === 'running') {
+  updatedStatus='done'
+} else {
+  updatedStatus = 'archive';
+}
   return (
     <div className="bg-secondary/10 rounded-md p-5">
       <h1
@@ -33,9 +33,9 @@ const TaskCard = () => {
           </button>
           <button
             onClick={() =>
-              dispatch(updateStatus({ id: task.id, status: updatedStatus }))
+              dispatch(updateStatus({ id: task.id, status:updatedStatus}))
             }
-            title="In progress"
+            title="Update Status"
           >
             <ArrowRightIcon className="h-5 w-5 text-primary" />
           </button>
