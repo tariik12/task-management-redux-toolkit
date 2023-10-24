@@ -4,6 +4,7 @@ import Tasks from '../pages/Tasks';
 import Chat from '../pages/Chat';
 import Settings from '../pages/Settings';
 import Profile from '../pages/Profile';
+import Feed from '../pages/Feed';
 const routes = createBrowserRouter([
   {
     path: '/',
@@ -20,6 +21,10 @@ const routes = createBrowserRouter([
       {
         path: '/settings',
         element: <Settings />,
+      },
+      {
+        path: '/feed',
+        element: <Feed />,
       },
       {
         path: '/profile',
