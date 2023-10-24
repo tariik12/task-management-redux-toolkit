@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form";
 import PostCard from "../components/posts/PostCard";
-import { useGetPostsQuery } from "../redux/featurse/api/baseApi";
+import { useGetPostsQuery, useSetPostMutation } from "../redux/featurse/api/baseApi";
 
 
 const Feed = () => {
     const {data:posts,isLoading, isError} = useGetPostsQuery();
 const {register,handleSubmit} = useForm();
+const [ setPost, {data:postData}] = useSetPostMutation();
+console.log(postData)
     if(isLoading){
         return<p className="text-9xl">Loading .....</p>
     }
@@ -14,7 +16,7 @@ const {register,handleSubmit} = useForm();
     }
 
     const onSubmit =(data) =>{
-console.log(data)
+setPost(data)
     }
     return (
         <div>

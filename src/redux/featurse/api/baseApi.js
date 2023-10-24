@@ -7,7 +7,9 @@ const baseApi = createApi({
     }),
     endpoints: (builder) => ({
         getPosts: builder.query({
-            query: () => '/posts'
+            query: () => ({
+                url:'/posts'
+            })
         }),
         getUsers: builder.query({
             query: () => '/users'
@@ -15,8 +17,15 @@ const baseApi = createApi({
         getPostById: builder.query({
             query: (id) => `/posts/${id}`
         }),
+        setPost:builder.mutation({
+            query:(post) =>({
+                url:'/posts',
+                method:'POST',
+                body:post,
+            })
+        })
     }),
 });
 
-export const { useGetPostsQuery, useGetPostByIdQuery } = baseApi;
+export const { useGetPostsQuery, useGetPostByIdQuery, useSetPostMutation } = baseApi;
 export default baseApi;
